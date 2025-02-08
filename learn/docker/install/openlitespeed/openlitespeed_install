@@ -1,0 +1,12 @@
+  wget https://www.litespeedtech.com/packages/6.0/lsws-6.3.1-ent-x86_64-linux.tar.gz
+  git clone https://github.com/litespeedtech/ols-dockerfiles.git
+  cd ols-dockerfiles/template
+  bash build.sh --ols 1.8.2 --php lsphp83
+  vi docker-compose.yml
+  docker compose up -d
+  docker compose exec openlitespeed bash
+  
+  # in the container, set the admin password:
+  cd /usr/local/lsws/admin/misc
+  ./admpass.sh
+  exit

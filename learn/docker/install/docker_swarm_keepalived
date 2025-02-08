@@ -1,0 +1,48 @@
+  189  sudo apt install keepalived -y
+  191  ls -al /etc/keepalived/
+  195  sudo vim /etc/keepalived/keepalived.conf
+
+vrrp_instance VI_1 {
+        state MASTER
+        interface enp3s0
+        virtual_router_id 51
+        priority 120
+        advert_int 1
+        authentication {
+              auth_type PASS
+              auth_pass @U7h_p@$$
+        }
+        virtual_ipaddress {
+              192.168.110.200/24
+        }
+}
+
+  198  sudo systemctl start keepalived
+  199  sudo systemctl enable keepalived
+  200  sudo systemctl status keepalived
+
+● keepalived.service - Keepalive Daemon (LVS and VRRP)
+     Loaded: loaded (/lib/systemd/system/keepalived.service; enabled; vendor preset: enabled)
+     Active: active (running) since Sat 2024-12-07 13:37:39 UTC; 58s ago
+   Main PID: 3701 (keepalived)
+      Tasks: 2 (limit: 38380)
+     Memory: 2.8M
+        CPU: 23ms
+     CGroup: /system.slice/keepalived.service
+             ├─3701 /usr/sbin/keepalived --dont-fork
+             └─3702 /usr/sbin/keepalived --dont-fork
+
+Dec 07 13:37:39 ross1a Keepalived[3701]: Command line: '/usr/sbin/keepalived' '--dont-fork'
+Dec 07 13:37:39 ross1a Keepalived[3701]: Configuration file /etc/keepalived/keepalived.conf
+Dec 07 13:37:39 ross1a Keepalived[3701]: NOTICE: setting config option max_auto_priority should result in better kee>
+Dec 07 13:37:39 ross1a Keepalived[3701]: Starting VRRP child process, pid=3702
+Dec 07 13:37:39 ross1a systemd[1]: keepalived.service: Got notification message from PID 3702, but reception only pe>
+Dec 07 13:37:39 ross1a Keepalived_vrrp[3702]: (/etc/keepalived/keepalived.conf: Line 9) Truncating auth_pass to 8 ch>
+Dec 07 13:37:39 ross1a Keepalived[3701]: Startup complete
+Dec 07 13:37:39 ross1a systemd[1]: Started Keepalive Daemon (LVS and VRRP).
+Dec 07 13:37:39 ross1a Keepalived_vrrp[3702]: (VI_1) Entering BACKUP STATE (init)
+Dec 07 13:37:42 ross1a Keepalived_vrrp[3702]: (VI_1) Entering MASTER STATE
+
+(repeat the same for each additional node, but change:
+   MASTER to BACKUP
+   priority - reduce the number to set a lower priority)

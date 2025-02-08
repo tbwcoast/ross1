@@ -1,0 +1,33 @@
+# Ignore node_modules and other dependencies
+node_modules/
+vendor/
+
+# Ignore logs and temporary files
+*.log
+tmp/
+
+# Ignore binary files
+*.exe
+*.dll
+*.so
+*.bin
+*.o
+*.a
+*.lib
+
+# Ignore media files
+*.mp4
+*.mp3
+
+# Ignore large files
+*.zip
+*.tar
+*.tar.gz
+*.rar
+
+# Ignore specific large files or directories
+# large_files/
+# large_files/*
+copilot/id_ed3
+
+# Ignore embedded repository

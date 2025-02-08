@@ -1,0 +1,71 @@
+    1  cd 
+    2  ll
+    3  id
+    4  tail -2 /etc/passwd
+    5  cat /etc/default/useradd 
+    6  cat /etc/shadow
+    7  users
+    8  usermod -c "Super User" superuser
+    9  exit
+   10  top
+   11  type echo
+   12  type ls
+   13  type ls clean_file echo do id
+   14  ls -A
+   15  clear
+   16  sudo -l
+   17  hostnamectl
+   18  echo $PS1
+   19  dc -
+   20  cd -
+   21  exit
+   22  cd ~
+   23  clear
+   24  finger superuser
+   25  id
+   26  who
+   27  w
+   28  ip addr
+   29  ip addr show inet0
+   30  ip addr show
+   31  ip addr show enp3s0
+   32  clear
+   33  ll /ect/networks
+   34  ll /etc/networks
+   35  less /etc/networks
+   36  less /etc/resolv.conf 
+   37  dig rosslyn.cloud
+   38  dig -t MX rosslyn.cloud
+   39  dig -t NS rosslyn.cloud
+   40  uname -r
+   41  ps
+   42  tty
+   43  su -
+   44  cls
+   45  clear
+   46  ll
+   47  mkdir .ssh
+   48  ll
+   49  vim .ssh/authorized_keys
+   50  mkdir keygen
+   51  ll
+   52  mkdir projects
+   53  mkdir projects/learn
+   54  mkdir projects/learn/bash
+   55  cd projects/learn/bash
+   56  history
+   57  mkdir history
+   58  cd history
+   59  history > hist_start
+   60  cat hist_start 
+   61  ls /etc/hosts
+   62  cat /etc/hosts
+   63  cat -vet /etc/hosts
+   64  clear
+   65  cat /etc/hosts
+   66  cat -vet /etc/hosts
+   67  tail -n1 /etc/hosts
+   68  tail -n2 /etc/hosts
+   69  history
+   70  history 4
+   71  history > hist_1

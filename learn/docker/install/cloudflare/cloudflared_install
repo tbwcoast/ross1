@@ -1,0 +1,2 @@
+docker run -d --restart unless-stopped cloudflare/cloudflared:latest tunnel --no-autoupdate run --token eyJhIjoiOWRlNjkxYWYyZWU5YTAzMTU3ZTllNjJmYzc5NjNiZGMiLCJ0IjoiMjYzMTA1YjEtZTY5NC00OGJlLTg2Y2ItOTNhNjkwMDRmODBhIiwicyI6Ik1XRTFNR1F4TnprdE1UTmlNQzAwWmpFMkxUbGxZemN0T1RZeU5ETmpaalUyWlRNeiJ9
+clear

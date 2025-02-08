@@ -1,0 +1,98 @@
+    1  cd 
+    2  ll
+    3  id
+    4  tail -2 /etc/passwd
+    5  cat /etc/default/useradd 
+    6  cat /etc/shadow
+    7  users
+    8  usermod -c "Super User" superuser
+    9  exit
+   10  top
+   11  type echo
+   12  type ls
+   13  type ls clean_file echo do id
+   14  ls -A
+   15  sudo -l
+   16  hostnamectl
+   17  echo $PS1
+   18  dc -
+   19  cd -
+   20  exit
+   21  cd ~
+   22  finger superuser
+   23  id
+   24  who
+   25  w
+   26  ip addr
+   27  ip addr show inet0
+   28  ip addr show
+   29  ip addr show enp3s0
+   30  ll /ect/networks
+   31  ll /etc/networks
+   32  less /etc/networks
+   33  less /etc/resolv.conf 
+   34  dig rosslyn.cloud
+   35  dig -t MX rosslyn.cloud
+   36  dig -t NS rosslyn.cloud
+   37  uname -r
+   38  ps
+   39  tty
+   40  su -
+   41  cls
+   42  ll
+   43  mkdir .ssh
+   44  ll
+   45  vim .ssh/authorized_keys
+   46  mkdir keygen
+   47  ll
+   48  mkdir projects
+   49  mkdir projects/learn
+   50  mkdir projects/learn/bash
+   51  cd projects/learn/bash
+   52  history
+   53  mkdir history
+   54  cd history
+   55  history > hist_start
+   56  cat hist_start 
+   57  ls /etc/hosts
+   58  cat /etc/hosts
+   59  cat -vet /etc/hosts
+   60  cat /etc/hosts
+   61  cat -vet /etc/hosts
+   62  tail -n1 /etc/hosts
+   63  tail -n2 /etc/hosts
+   64  history
+   65  history 4
+   66  history > hist_1
+   67  exit
+   68  history
+   69  cat hist_1
+   70  echo $PS1
+   71  declare -p PS1
+   72  declare PS1="\! \$"
+   73  declare -p PS1
+   74  PS1="\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$"
+   75  declare -p PS1
+   76  ls -l
+   77  echo $HISTCONTROL
+   78  HISTCONTROL = "ignoredups:ignorespace"
+   79  echo $HISTCONTROL
+   80  ls -la .bash_history 
+   81  cat .bash_history 
+   82  exit
+   83  history
+   84  echo $HISTCONTROL
+   85  cd history
+   86  cd history proj
+   87  history
+   88  cat .bash_history 
+   89  cat ~/.bash_history 
+   90  cat ~/.bash_history > hist_2
+   91  HISTCONTROL = "ignoredups:ignorespace"
+   92  HISTCONTROL="erasedups:ignorespace"
+   93  ls
+   94  cd
+   95  clear
+   96  pwd
+   97  cd projects/learn/bash/history/
+   98  history > hist_3

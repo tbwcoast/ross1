@@ -1,0 +1,217 @@
+services:
+#  # PostgreSQL for Authentik
+#  postgresql:
+#    image: postgres:12-alpine
+#    container_name: authentik-postgres
+#    restart: unless-stopped
+#    volumes:
+#      - postgresql:/var/lib/postgresql/data
+#    environment:
+#      - POSTGRES_PASSWORD=${PG_PASS}
+#      - POSTGRES_USER=${PG_USER:-authentik}
+#      - POSTGRES_DB=${PG_DB:-authentik}
+#    env_file: .env
+#    networks:
+#      - proxy
+#
+#  # Redis for Authentik
+#  redis:
+#    image: redis:alpine
+#    container_name: authentik-redis
+#    restart: unless-stopped
+#    networks:
+#      - proxy
+#
+#  # Authentik Identity Provider
+#  authentik:
+#    image: ghcr.io/goauthentik/server:latest
+#    container_name: authentik-server
+#    restart: unless-stopped
+#    command: server
+#    environment:
+#      AUTHENTIK_REDIS__HOST: authentik-redis
+#      AUTHENTIK_POSTGRESQL__HOST: authentik-postgres
+#      AUTHENTIK_POSTGRESQL__USER: ${PG_USER:-authentik}
+#      AUTHENTIK_POSTGRESQL__NAME: ${PG_DB:-authentik}
+#      AUTHENTIK_POSTGRESQL__PASSWORD: ${PG_PASS}
+#    volumes:
+#      - ./media:/media
+#      - ./custom-templates:/templates
+#      - geoip:/geoip
+#    env_file: .env
+#    ports:
+#      - "9000:9000"
+#    networks:
+#      - proxy
+#
+#  # Headscale for Tailscale Management
+#  headscale:
+#    image: headscale/headscale:latest
+#    container_name: headscale
+#    ports:
+#      - "8080:8080"
+#      - "443:443"
+#      - "80:80"
+#      - "5040:5040"
+#    environment:
+#      - HEADSCALE_LISTEN_IP=0.0.0.0
+#      - HEADSCALE_LISTEN_PORT=5040
+#      - HEADSCALE_ADMIN_USER=admin
+#      - HEADSCALE_ADMIN_PASSWORD=your_secure_password
+#    volumes:
+#      - headscale-data:/var/lib/headscale
+#    networks:
+#      - proxy
+#
+#  # Elasticsearch for log storage
+#  elasticsearch:
+#    image: docker.elastic.co/elasticsearch/elasticsearch:7.10.2
+#    container_name: elasticsearch
+#    environment:
+#      - http.host=0.0.0.0
+#      - transport.host=localhost
+#      - xpack.security.enabled=false
+#    ports:
+#      - "9200:9200"
+#    volumes:
+#      - ./data/elasticsearch:/usr/share/elasticsearch/data
+#    networks:
+#      - proxy
+#
+#  # Kibana for log visualization
+#  kibana:
+#    image: docker.elastic.co/kibana/kibana:7.10.2
+#    container_name: kibana
+#    ports:
+#      - "5601:5601"
+#    depends_on:
+#      - elasticsearch
+#    networks:
+#      - proxy
+#
+#  # Logstash for log processing
+#  logstash:
+#    image: docker.elastic.co/logstash/logstash:7.10.2
+#    container_name: logstash
+#    ports:
+#      - "1514:1514/udp"
+#    volumes:
+#      - ./config/logstash:/usr/share/logstash/pipeline
+#    depends_on:
+#      - elasticsearch
+#    networks:
+#      - proxy
+#
+#  # Traefik for reverse proxy and SSL termination
+#  traefik:
+#    image: traefik:v2.4
+#    container_name: traefik
+#    restart: unless-stopped
+#    command:
+#      - "--api.insecure=true"
+#      - "--providers.docker=true"
+#      - "--entrypoints.web.address=:80"
+#      - "--entrypoints.websecure.address=:443"
+#      - "--certificatesresolvers.le.acme.httpchallenge=true"
+#      - "--certificatesresolvers.le.acme.httpchallenge.entrypoint=web"
+#      - "--certificatesresolvers.le.acme.email=your_email@example.com"
+#      - "--certificatesresolvers.le.acme.storage=/letsencrypt/acme.json"
+#    ports:
+#      - "80:80"
+#      - "443:443"
+#      - "8080:8080"
+#    volumes:
+#      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+#      - "./letsencrypt:/letsencrypt"
+#    networks:
+#      - proxy
+#
+#  # Portainer for container management
+##  portainer:
+##    image: portainer/portainer-ce
+##    container_name: portainer
+##    restart: always
+##    ports:
+##      - "9000:9000"
+##    volumes:
+##      - /var/run/docker.sock:/var/run/docker.sock
+##      - portainer_data:/data
+##    networks:
+##      - proxy
+
+  # Nginx Proxy Manager for domain and web services
+  nginx_proxy_manager:
+    image: jc21/nginx-proxy-manager:latest
+    container_name: nginx_proxy_manager
+    restart: always
+    ports:
+      - "80:80"
+      - "81:81"
+      - "443:443"
+    volumes:
+      - nginx_data:/data
+      - nginx_letsencrypt:/etc/letsencrypt
+    networks:
+      - proxy
+
+#  # Nextcloud for collaboration services
+#  nextcloud:
+#    image: nextcloud
+#    container_name: nextcloud
+#    restart: always
+#    ports:
+#      - "8080:80"
+#    volumes:
+#      - nextcloud_data:/var/www/html
+#    environment:
+#      - NEXTCLOUD_ADMIN_USER=admin
+#      - NEXTCLOUD_ADMIN_PASSWORD=your_secure_password
+#    depends_on:
+#      - nextcloud_db
+#    networks:
+#      - proxy
+#
+#  # MariaDB for Nextcloud
+#  nextcloud_db:
+#    image: mariadb
+#    container_name: nextcloud_db
+#    restart: always
+#    environment:
+#      - MYSQL_ROOT_PASSWORD=your_root_password
+#      - MYSQL_DATABASE=nextcloud
+#      - MYSQL_USER=nextcloud
+#      - MYSQL_PASSWORD=your_db_password
+#    volumes:
+#      - db_data:/var/lib/mysql
+#    networks:
+#      - proxy
+#
+#  # Webmin for host system administration
+##  webmin:
+##    image: sath89/webmin
+##    container_name: webmin
+##    restart: unless-stopped
+##    ports:
+##      - "10000:10000"
+##    volumes:
+##      - webmin_data:/etc/webmin
+##    networks:
+##      - proxy
+
+volumes:
+  postgresql:
+  geoip:
+  headscale-data:
+  elasticsearch-data:
+  letsencrypt:
+  portainer_data:
+  nginx_data:
+  nginx_letsencrypt:
+  nextcloud_data:
+  db_data:
+  webmin_data:
+
+networks:
+  proxy:
+    name: pfsense_network
+#    external: true

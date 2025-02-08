@@ -1,0 +1,12 @@
+services:
+  copilot-client:
+    image: your-copilot-client-image
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./data:/data
+    networks:
+      - proxy
+networks:
+  proxy:
+    external: true

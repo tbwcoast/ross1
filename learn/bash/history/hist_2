@@ -1,0 +1,92 @@
+cd 
+ll
+id
+tail -2 /etc/passwd
+cat /etc/default/useradd 
+cat /etc/shadow
+users
+usermod -c "Super User" superuser
+exit
+top
+type echo
+type ls
+type ls clean_file echo do id
+ls -A
+clear
+sudo -l
+hostnamectl
+echo $PS1
+dc -
+cd -
+exit
+cd ~
+clear
+finger superuser
+id
+who
+w
+ip addr
+ip addr show inet0
+ip addr show
+ip addr show enp3s0
+clear
+ll /ect/networks
+ll /etc/networks
+less /etc/networks
+less /etc/resolv.conf 
+dig rosslyn.cloud
+dig -t MX rosslyn.cloud
+dig -t NS rosslyn.cloud
+uname -r
+ps
+tty
+su -
+cls
+clear
+ll
+mkdir .ssh
+ll
+vim .ssh/authorized_keys
+mkdir keygen
+ll
+mkdir projects
+mkdir projects/learn
+mkdir projects/learn/bash
+cd projects/learn/bash
+history
+mkdir history
+cd history
+history > hist_start
+cat hist_start 
+ls /etc/hosts
+cat /etc/hosts
+cat -vet /etc/hosts
+clear
+cat /etc/hosts
+cat -vet /etc/hosts
+tail -n1 /etc/hosts
+tail -n2 /etc/hosts
+history
+history 4
+history > hist_1
+exit
+history
+cd projects/learn/bash/history/
+cat hist_1
+clear
+pwd
+echo $PS1
+declare -p PS1
+declare PS1="\! \$"
+ls
+cd
+declare -p PS1
+PS1="\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$"
+declare -p PS1
+ls -l
+echo $HISTCONTROL
+HISTCONTROL = "ignoredups:ignorespace"
+echo $HISTCONTROL
+ls -la .bash_history 
+cat .bash_history 
+exit

@@ -1,0 +1,20 @@
+services:
+  openlitespeed:
+    image: litespeedtech/openlitespeed:1.8.2-lsphp83  # The image to use
+    container_name: openlitespeed  # Name of the container
+    ports:
+      - "7080:7080"  # Map port 7080
+      - "80:80"      # Map port 80
+      - "443:443"    # Map port 443
+    tty: true  # Keep the terminal open
+    network_mode: bridge  # Use the default bridge network
+    restart: unless-stopped  # Optionally, restart the container automatically
+    volumes:
+      - /home/superuser/projects/openlitespeed/data:/opt/data
+      - ols_web_content:/var/www/html      # Persistent web content
+      - ols_config_data:/usr/local/lsws     # Persistent configuration files
+      - ols_log_data:/usr/local/lsws/logs   # Persistent logs
+volumes:
+  ols_web_content:
+  ols_config_data:
+  ols_log_data:

@@ -1,0 +1,8 @@
+# to review system logs such as logins, etc.
+
+journalctl --since "yesterday" | grep login
+
+journalctl | grep login | grep New
+
+sudo cat /var/log/auth.log | grep Accept
+

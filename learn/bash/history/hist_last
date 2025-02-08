@@ -1,0 +1,101 @@
+    1  ll
+    2  id
+    3  tail -2 /etc/passwd
+    4  cat /etc/default/useradd 
+    5  cat /etc/shadow
+    6  users
+    7  usermod -c "Super User" superuser
+    8  exit
+    9  top
+   10  type echo
+   11  type ls
+   12  type ls clean_file echo do id
+   13  ls -A
+   14  sudo -l
+   15  hostnamectl
+   16  echo $PS1
+   17  dc -
+   18  cd -
+   19  exit
+   20  cd ~
+   21  finger superuser
+   22  id
+   23  who
+   24  w
+   25  ip addr
+   26  ip addr show inet0
+   27  ip addr show
+   28  ip addr show enp3s0
+   29  ll /ect/networks
+   30  ll /etc/networks
+   31  less /etc/networks
+   32  less /etc/resolv.conf 
+   33  dig rosslyn.cloud
+   34  dig -t MX rosslyn.cloud
+   35  dig -t NS rosslyn.cloud
+   36  uname -r
+   37  ps
+   38  tty
+   39  su -
+   40  cls
+   41  ll
+   42  mkdir .ssh
+   43  ll
+   44  vim .ssh/authorized_keys
+   45  mkdir keygen
+   46  ll
+   47  mkdir projects
+   48  mkdir projects/learn
+   49  mkdir projects/learn/bash
+   50  cd projects/learn/bash
+   51  mkdir history
+   52  cd history
+   53  history > hist_start
+   54  cat hist_start 
+   55  ls /etc/hosts
+   56  cat /etc/hosts
+   57  cat -vet /etc/hosts
+   58  cat /etc/hosts
+   59  cat -vet /etc/hosts
+   60  tail -n1 /etc/hosts
+   61  tail -n2 /etc/hosts
+   62  history 4
+   63  history > hist_1
+   64  exit
+   65  cat hist_1
+   66  echo $PS1
+   67  declare -p PS1
+   68  declare PS1="\! \$"
+   69  declare -p PS1
+   70  PS1="\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$"
+   71  declare -p PS1
+   72  ls -l
+   73  echo $HISTCONTROL
+   74  HISTCONTROL = "ignoredups:ignorespace"
+   75  echo $HISTCONTROL
+   76  ls -la .bash_history 
+   77  cat .bash_history 
+   78  exit
+   79  echo $HISTCONTROL
+   80  cd history
+   81  cd history proj
+   82  cat .bash_history 
+   83  cat ~/.bash_history 
+   84  cat ~/.bash_history > hist_2
+   85  HISTCONTROL = "ignoredups:ignorespace"
+   86  HISTCONTROL="erasedups:ignorespace"
+   87  ls
+   88  cd
+   89  pwd
+   90  cd projects/learn/bash/history/
+   91  history > hist_3
+   92  history
+   93  vim .bashrc
+   94  vim ~/.bashrc
+   95  color_prompt=yes
+   96  less ~./bashrc
+   97  less ~/.bashrc
+   98  PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+   99  clear
+  100  cd 
+  101  history > projects/learn/bash/history/hist_last

@@ -1,0 +1,17 @@
+  174  echo "Initializing the docker swarm cluster..."
+  175  sudo docker swarm init --advertise-addr 208.87.128.73
+
+
+Swarm initialized: current node (z04fc955b5x9qlbqm6fprqynp) is now a manager.
+
+To add a worker to this swarm, run the following command:
+
+    docker swarm join --token SWMTKN-1-3q4hgvpvy6c79i3u94zsw0wkrdup48t816g30i4x3f9j4tcx57-38f3j84ovhhnpw0j2b141ili1 208.87.128.73:2377
+
+To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
+
+  183  docker node ls
+
+ID                            HOSTNAME   STATUS    AVAILABILITY   MANAGER STATUS   ENGINE VERSION
+z04fc955b5x9qlbqm6fprqynp *   ross1a     Ready     Active         Leader           27.3.1
+

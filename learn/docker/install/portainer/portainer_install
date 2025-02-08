@@ -1,0 +1,6 @@
+ curl -L https://downloads.portainer.io/ce2-21/portainer-agent-stack.yml -o portainer-agent-stack.yml
+ docker stack deploy -c portainer-agent-stack.yml portainer
+ docker service ls
+ docker stop portainer_portainer.1.w2ggn65tv1f08ar16gpo48ibi
+ docker start portainer_portainer.1.w2ggn65tv1f08ar16gpo48ibi
+ 
