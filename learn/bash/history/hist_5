@@ -1,0 +1,1000 @@
+  118  PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+  119  clear
+  120  cd 
+  121  history > projects/learn/bash/history/hist_last
+  122  echo "Beginning Docker installation..."
+  123  for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
+  124  su -
+  125  groups
+  126  exit
+  127  docker run hello-world
+  128  exit
+  129  sudo ls /
+  130  PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+  131  clear
+  132  env
+  133  history
+  134  echo "Beginning Docker installation... after adding user to sudo group..."
+  135  echo "(su -;usermod -aG sudo username)..."
+  136  clear
+  137  for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
+  138  echo "Set up Docker's apt repository..."
+  139  sudo apt-get update
+  140  sudo apt-get install ca-certificates curl
+  141  sudo install -m 0755 -d /etc/apt/keyrings
+  142  sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+  143  sudo chmod a+r /etc/apt/keyrings/docker.asc
+  144  echo   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  145    $(. /etc/os-release && echo "$VERSION_CODENAME") stable" |   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  146  sudo apt-get update
+  147  echo "Install the Docker packages..."
+  148  sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+  149  echo "Verify that the installation is successful..."
+  150  sudo docker run hello-world
+  151  echo "Create the docker group and add the user..."
+  152  sudo groupadd docker
+  153  sudo usermod -aG docker $USER
+  154  newgrp docker
+  155  docker run hello-world
+  156  exit
+  157  sudo reboot
+  158  mkdir 
+  159  mkdir --help
+  160  mkdir -p projects/learn/docker/install
+  161  tail -n30 ~/.bashrc > projects/learn/docker/install/docker_install
+  162  vim ~/.bashrc 
+  163  tail -n30 ~/.bash_histort
+  164  tail -n30 ~/.bash_history
+  165  tail -n30 ~/.bash_history | less
+  166  tail -n24 ~/.bash_history | less
+  167  tail -n24 ~/.bash_history  > projects/learn/docker/install/docker_install
+  168  vim projects/learn/docker/install/docker_install
+  169  docker version
+  170  docker swarm
+  171  docker compose
+  172  docker swarm version
+  173  clear
+  174  echo "Initializing the docker swarm cluster..."
+  175  sudo docker swarm init --advertise-addr 208.87.128.73
+  176  clear
+  177  tail -n4 ~/.bash_history  > projects/learn/docker/install/docker_swarm_init
+  178  vim projects/learn/docker/install/docker_swarm_init 
+  179  history | tail -n10   > projects/learn/docker/install/docker_swarm_init
+  180  vim projects/learn/docker/install/docker_swarm_init 
+  181  clear
+  182  docker hosts ls
+  183  docker node ls
+  184  history
+  185  history | tail -n4 >> projects/learn/docker/install/docker_swarm_init
+  186  vim projects/learn/docker/install/docker_swarm_init 
+  187  docker node ls
+  188  vim projects/learn/docker/install/docker_swarm_init 
+  189  sudo apt install keepalived -y
+  190  ls /etc/keepalived/
+  191  ls -al /etc/keepalived/
+  192  vim /etc/keepalived/keepalived.conf
+  193  ip addr
+  194  vim /etc/keepalived/keepalived.conf
+  195  sudo vim /etc/keepalived/keepalived.conf
+  196  history | tail -n10 >> projects/learn/docker/install/docker_swarm_keepalived
+  197  vim projects/learn/docker/install/docker_swarm_keepalived 
+  198  sudo systemctl start keepalived
+  199  sudo systemctl enable keepalived
+  200  sudo systemctl status keepalived
+  201  history | tail -n10 >> projects/learn/docker/install/docker_swarm_keepalived
+  202  vim projects/learn/docker/install/docker_swarm_microceph
+  203  ping 192.168.110.200
+  204  clear
+  205  lsblk
+  206  sudo snap install microceph
+  207  history | grep mkdir
+  208  sudo snap refresh --hold microceph
+  209  sudo microceph cluster bootstrap
+  210  sudo microceph status
+  211  sudo microceph cluster add swarmvol1
+  212  sudo microceph status
+  213  systemctl status ssh
+  214  sudo systemctl status ssh
+  215  sudo apt install geoip-bin
+  216  geoiplookup 218.92.0.114
+  217  vim /etc/ssh/ssh_config
+  218  ll /etc/ssh/ssh_config
+  219  ll /etc/ssh/ssh_config.d
+  220  sudo vim /etc/ssh/ssh_config
+  221  less /etc/ssh/ssh_config
+  222  docker ps
+  223  docker ps -a
+  224  docker rm ecstatic_lewin quizzical_pasteur 
+  225  docker ps -a
+  226  docker images
+  227  docker rmi hello-world:latest 
+  228  docker images -a
+  229  clear
+  230  docker run -d --restart unless-stopped cloudflare/cloudflared:latest tunnel --no-autoupdate run --token eyJhIjoiOWRlNjkxYWYyZWU5YTAzMTU3ZTllNjJmYzc5NjNiZGMiLCJ0IjoiMjYzMTA1YjEtZTY5NC00OGJlLTg2Y2ItOTNhNjkwMDRmODBhIiwicyI6Ik1XRTFNR1F4TnprdE1UTmlNQzAwWmpFMkxUbGxZemN0T1RZeU5ETmpaalUyWlRNeiJ9
+  231  docker ps -a
+  232  exit
+  233  clear
+  234  docker ps
+  235  clear
+  236  ip addr
+  237  netstat
+  238  netstat | grep webmin
+  239  netstat | grep 10000
+  240  sudo lsof -i -P -n | grep LISTEN
+  241  sudo systemctl status
+  242  exit
+  243  sudo curl -o setup-repos.sh https://raw.githubusercontent.com/webmin/webmin/master/setup-repos.sh
+  244  sudo sh setup-repos.sh
+  245  apt-get install --install-recommends webmin
+  246  sudoapt-get install --install-recommends webmin
+  247  sudo apt-get install --install-recommends webmin
+  248  ps
+  249  top
+  250  clear
+  251  history | grep mkdir
+  252  mkdir -p projects/learn/webmin tail -n24 ~/.bash_history  > projects/learn/docker/install/
+  253  history | grep history
+  254  history
+  255  vim projects/learn/webmin/webmin_history
+  256  tree
+  257  sudo snap install tree
+  258  tree
+  259  mkdir -p projects/learn/docker/install/cloudflare
+  260  vim  projects/learn/docker/install/cloudflare/cloudflared_install
+  261  tree
+  262  exit
+  263  docker ps
+  264  ps -aux
+  265  ps -aux | grep web
+  266  lsb_release -a
+  267  cat /etc/passwd
+  268  clear
+  269  ll
+  270  tree .ssh
+  271  tree
+  272  ll .ssh
+  273  vim .ssh/authorized_keys
+  274  exit
+  275  tree
+  276  mkdir projects/learn/ssh
+  277  cdprojects/learn/ssh
+  278  cd projects/learn/ssh
+  279  ssh-keygen -o -a 100 -t ed25519 -f id_ed3
+  280  ll
+  281  cat id_ed3
+  282  cat id_ed3.pub 
+  283  exit
+  284  cd 
+  285  ~clear
+  286  clear
+  287  ll
+  288  ll .ssh
+  289  less .ssh/authorized_keys 
+  290  exit
+  291  sudo ll
+  292  sudo iptables -A INPUT -i lo -j ACCEPT
+  293  sudo iptables -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+  294  sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+  295  sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+  296  sudo iptables -L -v
+  297  sudo iptables -I INPUT 5 -p tcp --dport 443 -j ACCEPT
+  298  sudo iptables -L -v
+  299  su -
+  300  sudo reboot
+  301  docker ps
+  302  cd projects/superset
+  303  docker compose -f ./superset/docker-compose.yml ps
+  304  docker compose -f ./superset/docker-compose.yml db upgrade
+  305  docker compose -f ./superset/docker-compose.yml upgrade
+  306  docker compose -f ./superset/docker-compose.yml bash
+  307  exit
+  308  fail2ban
+  309  history | grep fail
+  310  su -
+  311  ll
+  312  tree
+  313  cd projects/learn/
+  314  touch journalctl.notes
+  315  vim journalctl.notes 
+  316  who
+  317  su -
+  318  clear
+  319  sudo cat /var/logs/auth.log 
+  320  sudo cat /var/log/auth.log 
+  321  sudo cat /var/log/auth.log | grep Accept
+  322  vim journalctl.notes 
+  323  cd..
+  324  cd ..
+  325  mkdir supersets
+  326  docker ps
+  327  docker ps -a
+  328  mkdir superset
+  329  cd superset
+  330  git clone --depth=1  https://github.com/apache/superset.git
+  331  ll
+  332  tree
+  333  docker compose up --build
+  334  find ./ yml
+  335  find ./ | grep yml
+  336  docker compose -f  ./superset/docker-compose.yml up --build
+  337  docker compose -f  ./superset/docker-compose.yml down
+  338  cp ./superset/docker-compose.yml .
+  339  ll
+  340  vim docker-compose.yml 
+  341  docker compose -f  ./docker-compose.yml up --build
+  342  vim superset/docker-compose.yml 
+  343  docker compose -f  ./superset/docker-compose.yml up --build
+  344  docker compose -f ./docker-compose.yml down
+  345  docker compose -f  ./superset/docker-compose.yml down
+  346  docker compose -f  ./superset/docker-compose.yml up --build --no-cache
+  347  docker compose -f  ./superset/docker-compose.yml build --no-cache
+  348  docker compose -f  ./superset/docker-compose.yml up
+  349  docker compose -f  ./superset/docker-compose.yml down
+  350  docker ps
+  351  docker network ls
+  352  rm -rf superset
+  353  sudo rm -rf superset
+  354  tree
+  355  git clone https://github.com/apache/superset
+  356  cd superset
+  357  git checkout tags/4.1.1
+  358  docker compose -f docker-compose-image-tag.yml up
+  359  cd ~
+  360  clear
+  361  ll
+  362  ll .ssh
+  363  ll .ssh/authorized_keys 
+  364  ll keygen/
+  365  tree
+  366  find ./ | grep ecsd
+  367  find ./ | grep essd
+  368  find ./ | grep pem
+  369  cd projects/
+  370  ll
+  371  ll superset
+  372  ll supersets
+  373  rm 
+  374  rmdir supersets
+  375  ll
+  376  mkdir openlitespeed
+  377  cd openlitespeed/
+  378  cd ~
+  379  clear
+  380  cd projects/openlitespeed/
+  381  ll
+  382  [200~
+  383  cd projects/openlitespeed/
+  384  cd ~
+  385  cd projects/openlitespeed/
+  386  clear
+  387  wget https://www.litespeedtech.com/packages/6.0/lsws-6.3.1-ent-x86_64-linux.tar.gz
+  388  git clone https://github.com/litespeedtech/ols-dockerfiles.git
+  389  ll
+  390  cd ols-dockerfiles/
+  391  ll
+  392  cd template
+  393  ls
+  394  ll
+  395  cat build.sh
+  396  cat Dockerfile 
+  397  cat entrypoint.sh 
+  398  clear
+  399  cat entrypoint.sh 
+  400  clear
+  401  cat Dockerfile 
+  402  bash build.sh -L 1.8.2 -P lsphp83
+  403  bash build.sh --ols 1.8.2 --php lsphp83
+  404  docker images
+  405  docker network ls
+  406  cd ..
+  407  clear
+  408  ll
+  409  cd ..
+  410  vi docker-compose.yml
+  411  docker images
+  412  vi docker-compose.yml
+  413  docker volume ls
+  414  docker image prune
+  415  docker image prune --volumes
+  416  docker system prune --volumes
+  417  docker ps
+  418  docker volume ls
+  419  history | grep webmin
+  420  clear
+  421  ll
+  422  docker compose up -d
+  423  docker network ls
+  424  docker compose down
+  425  vi docker-compose.yml 
+  426  docker compose up
+  427  docker ps
+  428  docker network ls
+  429  docker ps -a
+  430  docker compose up -d
+  431  docker ps -a
+  432  docker compose exec bash
+  433  docker compose ls
+  434  docker compose exec openlitespeed bash
+  435  cd ~
+  436  clear
+  437  docker ps
+  438  cd projects/openlitespeed/
+  439  docker compose openlitespeed bash
+  440  docker compose exec openlitespeed bash
+  441  docker compose up
+  442  docker compose up -d
+  443  docker compose logs -f
+  444  ll
+  445  ll ~/.ssh/authorized_keys 
+  446  cat ~/.ssh/authorized_keys 
+  447  docker compose down
+  448  cd projects/learn/webmin/
+  449  ls
+  450  cat webcert.pem
+  451  cat webcert.key
+  452  ll /etc/webmin/sshd/
+  453  ll /etc/webmin
+  454  ll /etc/webmin/webmin
+  455  sudo ll /etc/webmin/webmin
+  456  sudo ls /etc/webmin/webmin
+  457  ll /opt
+  458  ll /opt/containerd/
+  459  sudo ls /opt/containerd/
+  460  cd projects/learn/webmin/
+  461  ll
+  462  sudo mkdir /etc/webmin/cloud
+  463  sudo cp webcert.* /etc/webmin/cloud/
+  464  sudo chmod 600 /etc/webmin/cloud/webcert.key
+  465  sudo chmod 644 /etc/webmin/cloud/webcert.pem
+  466  sudo service restart webmin
+  467  sudo service webmin status
+  468  sudo service webmin restart
+  469  sudo less /var/webmin/miniserv.error
+  470  cd ~/projects/openlitespeed/
+  471  clear
+  472  ll
+  473  docker compose up -d
+  474  docker ps
+  475  docker compose ps
+  476  docker compose exec openlitespeed bash
+  477  vi docker-compose.yml 
+  478  docker compose exec openlitespeed 
+  479  docker compose exec openlitespeed bash
+  480  vi docker-compose.yml 
+  481  ll
+  482  mkdir datat
+  483  mv datat/ data
+  484  ll
+  485  pwd
+  486  vi docker-compose.yml 
+  487  docker compose down
+  488  ll /etc/webmin/webcert.*
+  489  ll /etc/webmin/cloud/webcert.*
+  490  cp /etc/webmin/cloud/webcert.* data
+  491  sudo cp /etc/webmin/cloud/webcert.* data
+  492  ll data
+  493  docker compose up
+  494  docker compose up -d
+  495  docker compose exec openlitespeed bash
+  496  vi docker-compose.yml 
+  497  docker compose down
+  498  docker volume ls
+  499  docker network ls
+  500  docker compose up -d
+  501  ll
+  502  tree
+  503  sudo tree
+  504  clear
+  505  docker compose ps
+  506  docker ps
+  507  docker compose exec openlitespeed bash
+  508  docker compose ps
+  509  docker compose logs
+  510  docker compose down
+  511  docker compose up -d
+  512  docker compose logs
+  513  docker compose down
+  514  vi docker-compose.yml 
+  515  ll
+  516  rm -f data/html/
+  517  sudo rm -R data/html/
+  518  tree
+  519  sudo rm -R data/config/
+  520  sudo rm -R data/logs/
+  521  docker compose up -d
+  522  docker compose logs
+  523  docker compose down
+  524  history | grep prune
+  525  docker image prune --volumes
+  526  docker ps -a
+  527  vi docker-compose.yml 
+  528  docker compose up -d
+  529  docker compose logs
+  530  docker volumes ls
+  531  docker volume ls
+  532  vi docker-compose.yml 
+  533  docker compose exec openlitespeed bash
+  534  docker ps -a
+  535  cd..
+  536  cd ..
+  537  mkdir portainer
+  538  cd portainer
+  539  docker node ls
+  540  sudo systemctl status keepalived
+  541  sudo microceph status
+  542  df -h
+  543  ll
+  544  clear
+  545  curl -L https://downloads.portainer.io/ce2-21/portainer-agent-stack.yml -o portainer-agent-stack.yml
+  546  ll
+  547  docker stack deploy -c portainer-agent-stack.yml portainer
+  548  docker service ls
+  549  docker stack deploy -c portainer-agent-stack.yml portainer
+  550  dockerps
+  551  docker ps
+  552  docker stop portainer
+  553  docker stop portainer_portainer.1.w2ggn65tv1f08ar16gpo48ibi 
+  554  docker start portainer_portainer.1.w2ggn65tv1f08ar16gpo48ibi 
+  555  history
+  556  cd ../learn/
+  557  ll
+  558  mkdir portainer
+  559  tree
+  560  mv portainer/ docker/install/
+  561  tree
+  562  cd docker/install/portainer/
+  563  touch portainer_install
+  564  vim portainer_install 
+  565  history
+  566  cd ..
+  567  mkdir openlitespeed
+  568  touch openlitespeed_install
+  569  mv openlitespeed_install openlitespeed
+  570  vim openlitespeed/openlitespeed_install 
+  571  cp ~/projects/openlitespeed/docker-compose.yml openlitespeed/
+  572  vim openlitespeed/openlitespeed_install 
+  573  docker ps
+  574  cd ~/projects/openlitespeed/
+  575  docker compose down
+  576  exit
+  577  cd ~
+  578  clear
+  579  cd ~/projects/openlitespeed/
+  580  docker compose up
+  581  docker compose down
+  582  docker volume ls
+  583  docker compose up -d
+  584  history | grep bash
+  585  ls ~/projects/learn/docker/
+  586  ls ~/projects/learn/docker/install/openlitespeed/
+  587  less ~/projects/learn/docker/install/openlitespeed/openlitespeed_install 
+  588  docker compose exec openlightspeed bash
+  589  cd ~/projects/openlitespeed/
+  590  docker compose exec openlightspeed bash
+  591  docker compose ls
+  592  docker compose exec openlitespeed bash
+  593  mkdir ../mailcow
+  594  cd ../mailcow
+  595  umask
+  596  exit
+  597  clear
+  598  sudo ./generate_config.sh
+  599  ll
+  600  sudo vi mailcow.conf
+  601  less docker-compose.yml 
+  602  docker-compose up -d
+  603  docker compose up -d
+  604  sudo docker compose up -d
+  605  cd ~
+  606  clear
+  607  mkdir projects/vaultwarden
+  608  cd projects/vaultwarden/
+  609  vi docker-compose.yml
+  610  ls
+  611  touch docker-compose.yml
+  612  vi docker-compose.yml
+  613  ls
+  614  docker compose up
+  615  docker compose down
+  616  exit
+  617  tree
+  618  tree | less
+  619  cd projects/openlitespeed/
+  620  ll
+  621  docker compose down
+  622  cd ..
+  623  lsb_release -d
+  624  sudo service nginx status
+  625  docker images
+  626  mkdir ubuntu
+  627  cd ubuntu
+  628  docker run -it --name my_ubuntu --rm ubuntu:latest bash
+  629  docker ps -a
+  630  clear
+  631  ls
+  632  ls projects
+  633  mkdir projects/seafile
+  634  cd projects/seafile
+  635  wget -O .env https://manual.seafile.com/12.0/repo/docker/ce/env
+  636  wget https://manual.seafile.com/12.0/repo/docker/ce/seafile-server.yml
+  637  wget https://manual.seafile.com/12.0/repo/docker/caddy.yml
+  638  ll
+  639  cat .env
+  640  vi .env
+  641  cp .env seafile_env
+  642  cat seafile_env 
+  643  cp seafile_env .env
+  644  docker compose up -d
+  645  pwgen -s 40 1
+  646  history | grep bash
+  647  docker run -it --name my_ubuntu --rm ubuntu:latest bash
+  648  touch private_key
+  649  vi private_key 
+  650  cp seafile_env .env
+  651  docker compose up -d
+  652  cat .env
+  653  wget -O .env https://manual.seafile.com/12.0/repo/docker/ce/env
+  654  vi .env
+  655  cp .env seafile_env.old
+  656  cp seafile_env .env
+  657  cat .env
+  658  ll
+  659  vi caddy.yml 
+  660  vi seafile-server.yml 
+  661  vi caddy.yml 
+  662  vi .env
+  663  history | grep bash
+  664  docker compose exec seafile bash
+  665  docker compose down
+  666  vi .env
+  667  docker compose up -d
+  668  docker compose exec seafile bash
+  669  docker ps
+  670  docker compose exec seafile-caddy bash
+  671  docker compose ps
+  672  docker compose exec seafile-caddy logs
+  673  docker compose exec caddy bash
+  674  docker compose exec caddy sh
+  675  docker compose exec caddy logs
+  676  docker compose logs caddy
+  677  docker compose logs caddy | grep csrf
+  678  docker compose logs caddy | grep CSRF
+  679  docker compose exec caddy logs
+  680  docker compose logs caddy
+  681  docker compose down
+  682  vi .env
+  683  docker ps -a
+  684  docker network ls
+  685  docker volume ls
+  686  docker compose up -d
+  687  docker volume ls
+  688  docker compose down
+  689  docker ps -a
+  690  tree
+  691  cd projects/vaultwarden/
+  692  ll
+  693  cat docker-compose.yml 
+  694  docker ps | grep vault
+  695  vi docker-compose.yml 
+  696  docker compose up
+  697  history | grep vau
+  698  docker compose down
+  699  ip addr
+  700  exit
+  701  git
+  702  ll
+  703  ll snap
+  704  ll projects/
+  705  mkdir projects/npm
+  706  cd projects/npm/
+  707  cd projects/dci
+  708  cat docker-compose-integrated.yml 
+  709  docker compose up
+  710  ll
+  711  docker compose -f docker-compose-integrated.yml up -d && docker compose logs
+  712  cat docker-compose-integrated.yml 
+  713  docker compose -f docker-compose-integrated.yml up -d && docker compose logs
+  714  docker compose down
+  715  ll
+  716  docker compose -f docker-compose-integrated.yml down
+  717  docker compose ps
+  718  docker compose -f docker-compose-integrated.yml ps
+  719  docker compose -f docker-compose-integrated.yml ps -a
+  720  clear
+  721  docker compose -f docker-compose-integrated.yml up -d && docker compose logs
+  722  cat docker-compose-integrated.yml 
+  723  touch docker-compose.yml
+  724  docker compose -f docker-compose-integrated.yml down
+  725  docker ps
+  726  docker ps -a
+  727  docker volumes ls
+  728  docker volume ls
+  729  history | grep prune
+  730  docker volumes --prune
+  731  docker system --help
+  732  docker system info
+  733  docker system prune
+  734  clear
+  735  docker volume ls
+  736  docker volume rm  dci_db_data dci_geoip dci_headscale-data dci_nextcloud_data dci_nginx_data dci_nginx_letsencrypt dci_postgresql
+  737  docker volume ls
+  738  history | grep portainer
+  739  history | grep mailcow
+  740  su -
+  741  history | grep superset
+  742  cat ../superset/docker-compose.yml 
+  743  docker network ls
+  744  clear
+  745  docker compose up -d && docker compose logs
+  746  docker compose down
+  747  docker compose up -d && docker compose logs
+  748  docker compose down
+  749  docker compose up -d && docker compose logs
+  750  cd projects/superset/
+  751  ll
+  752  docker compose down
+  753  cd superset/
+  754  docker compose down
+  755  ip addr show docker0
+  756  cd ~/projects/
+  757  ll
+  758  mkdir authentik
+  759  cd wauthentik
+  760  cd authentik/
+  761  wget https://goauthentik.io/docker-compose.yml
+  762  echo "PG_PASS=$(openssl rand -base64 36 | tr -d '\n')" >> .env
+  763  echo "AUTHENTIK_SECRET_KEY=$(openssl rand -base64 60 | tr -d '\n')" >> .env
+  764  ll
+  765  less .env
+  766  cd projects/authentik/
+  767  ll
+  768  cat .env
+  769  echo "AUTHENTIK_ERROR_REPORTING__ENABLED=true" >> .env
+  770  cat .env
+  771  docker compose up -d && docker compose logs
+  772  docker compose down
+  773  docker ps
+  774  docker ps | grep 9000
+  775  docker ps | grep 13
+  776  cd projects/authentik/
+  777  docker compose up -d && docker compose logs
+  778  docker compose down
+  779  docker compose up -d && docker compose logs
+  780  docker compose down
+  781  docker compose up -d && docker compose logs
+  782  docker compose down
+  783  docker compose up -d && docker compose logs
+  784  docker compose down
+  785  docker compose up -d && docker compose logs
+  786  docker compose logs -f
+  787  docker compose ps
+  788  docker compose run --rm authentik-worker dump_config
+  789  docker compose run --rm worker dump_config
+  790  docker compose run --rm worker --help
+  791  docker compose run --rm worker --help createsuperuser
+  792  docker compose run --rm worker createsuperuser --help
+  793  docker compose run --rm worker bash
+  794  docker compose run --rm worker changepassword --help
+  795  docker compose volume ls
+  796  docker volume ls
+  797  docker compose down
+  798  docker volume ls
+  799  history | grep prune
+  800  docker volumes --prune
+  801  docker volume --prune
+  802  docker volume prune
+  803  docker volume ls
+  804  docker volume rm authentik_database authentik_redis dci_nginx_data dci_nginx_letsencrypt 
+  805  docker ps
+  806  cd ../dci
+  807  docker compose ps
+  808  cd ../authentik/
+  809  clear
+  810  docker compose up -d && docker compose logs -f
+  811  history | grep change
+  812  docker compose run --rm worker changepassword --help
+  813  docker compose run --rm worker changepassword 
+  814  docker compose run --rm worker changepassword akadmin
+  815  cd projects/authentik/
+  816  docker compose logs -f
+  817  history show admin
+  818  history | grep admin
+  819  docker compose logs -f
+  820  cd projects/authentik/
+  821  docker compose logs -f
+  822  clear
+  823  cd ..
+  824  ll
+  825  mkdir speedtest
+  826  cd speedtest
+  827  echo -n 'base64:'; openssl rand -base64 32;
+  828  touch docker-compose.yml
+  829  ll
+  830  docker compose up -d && docker compose logs -f
+  831  docker compose down
+  832  docker compose up -d && docker compose logs -f
+  833  docker compose down
+  834  docker compose up -d && docker compose logs -f
+  835  history | grep net
+  836  ip addr show inet0
+  837  docker network ls
+  838  docker network status
+  839  docker network inspect dci_network 
+  840  ip addr
+  841  cd ../authentik/
+  842  docker compose logs -f
+  843  ip addr
+  844  ip addr show speedtest
+  845  ip addr grep speed
+  846  ip addr | grep speed
+  847  cd ../speedtest/
+  848  docker compose network ls
+  849  docker compose ls
+  850  docker compose speedtest 
+  851  docker compose speedtest ls
+  852  docker compose ps
+  853  docker compose top
+  854  docker compose status
+  855  docker compose stats
+  856  docker network ls
+  857  docker network --help
+  858  docker network inspect
+  859  docker networks inspect
+  860  docker network inspect dci_network 
+  861  history | grep web
+  862  docker images ls
+  863  docker images
+  864  clear
+  865  w3m http://192.168.110.200:80
+  866  history | grep ubuntu
+  867  docker run -it --name my_ubuntu --rm ubuntu:latest bash
+  868  docker ps 
+  869  cd projects/mailcow/
+  870  ls
+  871  cd mailcow-dockerized/
+  872  ls
+  873  cat mailcow.conf
+  874  sudo less mailcow.conf
+  875  cat README.md 
+  876  cd projects/authentik/
+  877  less docker-compose.yml 
+  878  cd projects/
+  879  ll
+  880  mkdir copilot
+  881  cd copilot
+  882  touch docker-compose.yml
+  883  history | grep ssh
+  884  ssh-keygen -o -a 100 -t ed25519 -f id_ed3
+  885  ll
+  886  cat id_ed3.pub 
+  887  less id_ed3.pub 
+  888  cd projects
+  889  git init
+  890  git config --global init.defaultBranch development
+  891  touch .gitignore
+  892  git add .
+  893  ll mailcow/
+  894  ll mailcow/mailcow-dockerized/
+  895  cd mailcow/mailcow-dockerized/
+  896  git status
+  897  ll
+  898  sudo chown -R $(whoami) /home/superuser/projects/mailcow/mailcow-dockerized
+  899  git status
+  900  cd ../../
+  901  git status
+  902  git add .
+  903  git status
+  904  git add .gitignore
+  905  git add authentik/
+  906  git add copilot/
+  907  git add dci/
+  908  git add learn/
+  909  git add mailcow/
+  910  git add openlitespeed/
+  911  git add portainer/
+  912  git add seafile/
+  913  git add speedtest/
+  914  git add superset/
+  915  git add vaultwarden/
+  916  ll openlitespeed/
+  917  git status
+  918  git config --global init.defaultBranch start
+  919  git commit -m "Initial commit"
+  920  git config --global user.email "tbwcoast@gmail.com"
+  921  git commit -m "Initial commit"
+  922  git status
+  923  git remote add origin https://github.com/tbwcoast/ross1.git
+  924  git push -u origin start
+  925  git login
+  926  git remote --help
+  927  git remote add origin https://github.com/tbwcoast/ross1.git
+  928  git push -u origin start
+  929  git push -u origin main
+  930  git push -u origin 
+  931  git push --set-upstream origin main
+  932  git branch
+  933  git push --set-upstream origin master
+  934  ll ~/.ssh
+  935  ll ~/.ssh/authorized_keys 
+  936  less ~/.ssh/authorized_keys 
+  937  ssh-keygen -t ed25519 -C "tbwcoast@gmail.com"
+  938  ll ~/.ssh/authorized_keys 
+  939  less ~/.ssh/authorized_keys 
+  940  ll ~/.ssh/
+  941  eval "$(ssh-agent -s)"
+  942  ssh-add ~/.ssh/id_ed25519
+  943  cat ~/.ssh/id_ed25519.pub
+  944  ll copilot
+  945  less copilot/id_ed3.pub 
+  946  ll ~/.ssh/
+  947  ssh-add ~/projects/copilot/id_ed3
+  948  git push --set-upstream origin master
+  949  history | grep https
+  950  history | grep hist
+  951  ll ~
+  952  find ~/ | grep hist1
+  953  find ~/ | grep hist_1
+  954  ll /home/superuser/projects/learn/bash/history/
+  955  history >  /home/superuser/projects/learn/bash/history/hist_4
+  956  git remote set-url origin git@github.com:tbwcoast/ross1.git
+  957  git push --set-upstream origin master
+  958  ssh-add -l
+  959  ll ~/.ssh/
+  960  less ~/.ssh/known_hosts
+  961  cp ./copilot/id_ed3 ~/.ssh
+  962  cp ./copilot/id_ed3.pub ~/.ssh
+  963  git remote set-url origin git@github.com:tbwcoast/ross1.git
+  964  git push --set-upstream origin master
+  965  ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts
+  966  git push --set-upstream origin master
+  967  git remote -v
+  968  ssh -T git@github.com
+  969  git push --set-upstream origin master
+  970  ll 
+  971  ll ~
+  972  ll ~/keygen/
+  973  mv copilot/id_ed3*.* ~/keygen/
+  974  ll copilot/
+  975  mv copilot/id_ed3 ~/keygen/
+  976  ll copilot/
+  977  git push --set-upstream origin master
+  978  git commit --amend --all
+  979  git push --set-upstream origin master
+  980  git submodule add https://github.com/tbwcoast/ross1 mailcow/mailcow-dockerized
+  981  git push 
+  982  git add .
+  983  git add mailcow
+  984  git commit -m "Updated mailcow docker-compose.yml"
+  985  git push
+  986  git add mailcow/
+  987  git status
+  988  cd mailcow/mailcow-dockerized
+  989  git status
+  990  git add data/conf/dovecot/conf.d/
+  991  git status
+  992  git add data/conf/postfix/main.cf
+  993  git status
+  994  cd ~/projects/
+  995  git push origin master
+  996  cd mailcow/mailcow-dockerized
+  997  git push origin master
+  998  git push
+  999  cd ~/projects/
+ 1000  git add mailcow/mailcow-dockerized/data/conf/postfix/main.cf
+ 1001  cd mailcow/mailcow-dockerized
+ 1002  git status
+ 1003  ll
+ 1004  git add docker-compose.yml mailcow.conf 
+ 1005  git add docker-compose.yml mailcow.conf -f
+ 1006  git status
+ 1007  git add docker-compose.yml  -f
+ 1008  git status
+ 1009  git commit -m "Describe the changes made in mailcow configuration
+ 1010  "
+ 1011  cd ../../
+ 1012  git add mailcow/mailcow-dockerized
+ 1013  git commit -m "Update mailcow submodule to latest commit"
+ 1014  cd mailcow/mailcow-dockerized
+ 1015  git push origin master
+ 1016  git remote set-url origin git@github.com:tbwcoast/ross1.git
+ 1017  git push origin master
+ 1018  cd ../../
+ 1019  git remote set-url origin git@github.com:tbwcoast/ross1.git
+ 1020  git push origin master
+ 1021  pwd
+ 1022  mkdir -P ./projects/dockge
+ 1023  mkdir -p ./projects/dockge
+ 1024  cd projects/dockge/
+ 1025  curl "https://dockge.kuma.pet/compose.yaml?port=5001&stacksPath=%2Fhome%2Fsuperuser%2Fproject%2Fdockge" --output compose.yaml
+ 1026  ll
+ 1027  less compose.yaml 
+ 1028  vim compose.yaml 
+ 1029  docker compose up -d
+ 1030  docker compose logs -f
+ 1031  ll
+ 1032  ll data/
+ 1033  docker compose down
+ 1034  docker network ls
+ 1035  cd..
+ 1036  cd ..
+ 1037  clear
+ 1038  mkdir komodo
+ 1039  cd komodo/
+ 1040  touch docker-compose.yml
+ 1041  touch .env
+ 1042  vi docker-compose.yml 
+ 1043  vi .env
+ 1044  history | grep rand
+ 1045  openssl rand -base64 20
+ 1046  openssl rand -base64 12
+ 1047  history | grep logs
+ 1048  docker compose up -d && docker compose logs -f
+ 1049  ip addr
+ 1050  ip addr | grep 208
+ 1051  history | grep 208.87.128.73
+ 1052  docker compose logs -f
+ 1053  docker ps -a
+ 1054  cd ../speedtest/
+ 1055  ll
+ 1056  docker compose down
+ 1057  cd ..
+ 1058  mkdir beszel
+ 1059  cd beszel
+ 1060  docker ps
+ 1061  cd project
+ 1062  git add .
+ 1063  ll
+ 1064  mv dockge ../projects/
+ 1065  sudo mv dockge ../projects/
+ 1066  ll dockge/
+ 1067  ls -alh dockge/
+ 1068  ll ../projects
+ 1069  ll ../projects/dockge/
+ 1070  cd ..
+ 1071  ll
+ 1072  rm -R project/dockge/
+ 1073  sudo rm -R project/dockge/
+ 1074  sudo rm -R project/
+ 1075  ll
+ 1076  cd projects/
+ 1077  git status
+ 1078  git add dockge
+ 1079  git add komodo
+ 1080  git status
+ 1081  history | find !
+ 1082  history | find commit
+ 1083  history | grep commit
+ 1084  git commit -m "adding the dockge and komodo applications"
+ 1085  history | grep git
+ 1086  git push master
+ 1087  git push origin master
+ 1088  git remote set-url origin git@github.com:tbwcoast/ross1.git
+ 1089  git push origin master
+ 1090  git config
+ 1091  git config --show-origin
+ 1092  git status
+ 1093  git add learn/bash/history/hist_4
+ 1094  git status
+ 1095  git commit -m "save some history"
+ 1096  ssh -T git@github.com
+ 1097  eval "$(ssh-agent -s)"
+ 1098  git remote -v
+ 1099  git remote set-url origin git@github.com:tbwcoast/ross1.git
+ 1100  ssh -T git@github.com
+ 1101  ls
+ 1102  ll
+ 1103  ll -al ~/.ssh
+ 1104  clear
+ 1105  cat ~/.ssh/id_ed25519.pub 
+ 1106  ssh -T git@github.com
+ 1107  git remote -v
+ 1108  cat ~/.ssh/config~
+ 1109  cat ~/.ssh/config
+ 1110  ll ~/.ssh
+ 1111  git remote set-url origin git@github.com:tbwcoast/ross1.git
+ 1112  git branch
+ 1113  git push origin master
+ 1114  find ../ | grep ed3
+ 1115  ll learn/
+ 1116  find ../ | grep hist
+ 1117  history > learn/bash/hist_5
